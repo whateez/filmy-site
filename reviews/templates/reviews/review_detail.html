@@ -1,0 +1,14 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if review.published_date %}
+            <div class="date">
+                {{ review.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ review.title }}</h1>
+        <p class="subtitle">{{ review.subtitle }}</p>
+        <p>{{ review.desc|linebreaks }}</p>
+    </div>
+{% endblock %}

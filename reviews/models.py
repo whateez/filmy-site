@@ -16,7 +16,7 @@ class review(models.Model):
 
     def publish(self):
         self.published_date = timezone.now()
-        self.published=True
+        self.published = True
         self.save()
 
     def __str__(self):

@@ -1,18 +1,12 @@
-<html>
-    <head>
-        <title>Filmy</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Filmy</a></h1>
-            {% for review in reviews %}
-            <div>
-                <h2> {{ review.title}} </h2>
-                <p> {{review.author}} on {{ review.published_date}} </p>
-                <p> {{ review.desc }} </p>
+{% extends 'reviews/base.html' %}
+{% block content %}
+    {% for review in reviews %}
+        <div class="post">
+            <div class="date">
+                {{ review.published_date }}
             </div>
-            {% endfor %}
+            <h1><a href="{% url 'review_detail' pk=review.pk %}">{{ review.title }}</a></h1>
+            <p>{{ review.desc|truncatechars:300 }}</p>
         </div>
-
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
