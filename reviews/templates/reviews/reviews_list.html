@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Filmy</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="">Filmy</a></h1>
+            {% for review in reviews %}
+            <div>
+                <h2> {{ review.title}} </h2>
+                <p> {{review.author}} on {{ review.published_date}} </p>
+                <p> {{ review.desc }} </p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </body>
+</html>

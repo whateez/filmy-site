@@ -12,9 +12,11 @@ class review(models.Model):
     rating = models.IntegerField(blank=True, null=True)
     created_date = models.DateField(default=timezone.now)
     published_date = models.DateField(blank=True, null=True)
+    published = models.BooleanField(default=False)
 
     def publish(self):
         self.published_date = timezone.now()
+        self.published=True
         self.save()
 
     def __str__(self):
