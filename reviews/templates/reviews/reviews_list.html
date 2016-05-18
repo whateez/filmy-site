@@ -6,7 +6,16 @@
                 {{ review.published_date }}
             </div>
             <h1><a href="{% url 'review_detail' pk=review.pk %}">{{ review.title }}</a></h1>
-            <p>{{ review.desc|truncatechars:300 }}</p>
+            <p class="f16">{{ review.desc|truncatechars:300 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block rightpane %}
+    <div class="f16"> <strong> Recent reviews </strong></div>
+    {% for review in reviews %}
+        <div class="f14 mBtm_10">
+            <a href="{% url 'review_detail' pk=review.pk %}">{{ review.title }}</a>
         </div>
     {% endfor %}
 {% endblock %}
