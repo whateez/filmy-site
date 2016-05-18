@@ -8,10 +8,13 @@
             </div>
         {% endif %}
         {% if user.is_authenticated %}
-            <a class="btn btn-default" href="{% url 'review_edit' pk=review.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{{ review.get_absolute_url }}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
         <h1>{{ review.title }}</h1>
         <p class="subtitle">{{ review.subtitle }}</p>
         <p> {{ review.desc|linebreaks }}</p>
     </div>
+
+    <div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-numposts="5"></div>
+
 {% endblock %}
