@@ -14,5 +14,4 @@
         <p class="subtitle">{{ review.subtitle }}</p>
         <p> {{ review.desc|linebreaks }}</p>
     </div>
-    <div class="fb-comments" data-href="{% url 'review_detail' pk=review.pk %}" data-numposts="5"></div>
 {% endblock %}
