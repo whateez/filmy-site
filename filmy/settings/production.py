@@ -12,7 +12,7 @@ def get_env_variable(var_name):
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
 DEBUG = False
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ['*']
 
 
 DATABASES = {
