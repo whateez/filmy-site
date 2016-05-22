@@ -6,7 +6,12 @@
                 {{ review.published_date }}
             </div>
             <h1><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></h1>
-            <p class="f16">{{ review.desc|truncatechars:300 }}</p>
+        
+            <p class="f16">
+                {% autoescape off %}
+                    {{ review.desc|truncatechars:300 }}
+                {% endautoescape %}
+            </p>
         </div>
     {% endfor %}
 {% endblock %}
