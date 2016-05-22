@@ -1,2 +1,4 @@
 Django==1.9.6
+django-summernote==0.8.5
 psycopg2==2.6.1
+wheel==0.24.0
