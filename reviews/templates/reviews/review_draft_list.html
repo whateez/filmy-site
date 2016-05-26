@@ -1,0 +1,12 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+    {% for review in reviews %}
+        <div class="">
+            <p class="">created: {{ review.created_date|date:'d-m-Y' }}</p>
+            <h1><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></h1>
+            <a class="btn btn-default" href="{{ review.get_absolute_url }}publish">Publish</a>
+            <p>{{ review.text|truncatechars:200 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

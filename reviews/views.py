@@ -6,10 +6,10 @@ from django.utils import timezone
 
 
 # Create your views here.
-def reviews_list(request):
+def review_list(request):
     reviews = review.objects.filter(published=True)
     context = {'reviews': reviews}
-    return render(request, 'reviews/reviews_list.html', context)
+    return render(request, 'reviews/review_list.html', context)
 
 def review_detail(request, pk):
     review_item = get_object_or_404(review, pk=pk)
@@ -28,7 +28,6 @@ def review_new(request):
         if form.is_valid():
             review_item = form.save(commit=False)
             review_item.author = request.user
-            review_item.published_date = timezone.now()
             review_item.save()
             return redirect(review_item.get_absolute_url())
     else:
@@ -43,10 +42,29 @@ def review_edit(request, pk):
         if form.is_valid():
             review_item = form.save(commit=False)
             review_item.author = request.user
-            review_item.published_date = timezone.now()
             review_item.save()
             return redirect(review_item.get_absolute_url())
     else:
         form = reviewForm(instance=review_item)
     context = {'form' : form}
     return render(request, 'reviews/review_edit.html', context)
+
+def review_draft_list(request):
+    reviews = review.objects.filter(published_date__isnull=True).order_by('created_date')
+    context = {'reviews' : reviews}
+    return render(request, 'reviews/review_draft_list.html', context)
+
+def review_publish(request, pk):
+    review_item = get_object_or_404(review, pk=pk)
+    review_item.publish()
+    return redirect(review_item.get_absolute_url())
+
+def review_unpublish(request, pk):
+    review_item = get_object_or_404(review, pk=pk)
+    review_item.unpublish()
+    return redirect(review_item.get_absolute_url())
+
+def review_delete(request, pk):
+    review_item = get_object_or_404(review, pk=pk)
+    review_item.delete()
+    return redirect('/')

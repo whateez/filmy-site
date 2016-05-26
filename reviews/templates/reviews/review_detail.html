@@ -9,6 +9,12 @@
         {% endif %}
         {% if user.is_authenticated %}
             <a class="btn btn-default" href="{{ review.get_absolute_url }}edit"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{{ review.get_absolute_url }}delete"><span class="glyphicon glyphicon-remove"></span></a>
+            {% if review.published %}
+                <a class="btn btn-default" href="{{ review.get_absolute_url }}unpublish">Unpublish</a>
+            {% else %}
+                <a class="btn btn-default" href="{{ review.get_absolute_url }}publish">Publish</a>
+            {% endif %}
         {% endif %}
         <h1>{{ review.title }}</h1>
         <div style="background-color:lightgrey;"> Movie Details:

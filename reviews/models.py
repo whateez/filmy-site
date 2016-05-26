@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from movies.models import movie
+from django.utils import timezone
 
 class review(models.Model):
     movie = models.ForeignKey(movie, blank=True, null=True)
@@ -16,10 +17,21 @@ class review(models.Model):
     last_updated_date = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)
+    status = models.BooleanField(default=True)
 
     def publish(self):
         self.published_date = timezone.now()
         self.published = True
+        self.save()
+
+    def unpublish(self):
+        self.published_date = None
+        self.published = False
+        self.save()
+
+    def delete(self):
+        self.last_updated_date = timezone.now()
+        self.status = False
         self.save()
 
     def __str__(self):
