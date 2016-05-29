@@ -6,14 +6,32 @@
                 {{ review.published_date }}
             </div>
             <h1><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></h1>
-
+            {% if review.cover_image %}
+                <img src='{{ review.cover_image.url }}' class='img-responsive' />
+            {% endif %}
             <p class="f16">
                 {% autoescape off %}
                     {{ review.desc|truncatechars:300 }}
                 {% endautoescape %}
             </p>
         </div>
+        <div style="clear:both;"> </div>
     {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if reviews.has_previous %}
+                <a href="?{{ page_request_var }}={{ reviews.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ reviews.number }} of {{ reviews.paginator.num_pages }}.
+            </span>
+
+            {% if reviews.has_next %}
+                <a href="?{{ page_request_var }}={{ reviews.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock %}
 
 {% block rightpane %}

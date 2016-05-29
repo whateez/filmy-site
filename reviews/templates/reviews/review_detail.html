@@ -17,6 +17,9 @@
             {% endif %}
         {% endif %}
         <h1>{{ review.title }}</h1>
+        {% if review.cover_image %}
+            <img src='{{ review.cover_image.url }}' class='img-responsive' />
+        {% endif %}
         <div style="background-color:lightgrey;"> Movie Details:
             <div>Name: {{ movie.name }} </div>
             <div>Language: {{movie.lang}} </div>

@@ -1,10 +1,56 @@
 {% extends 'reviews/base.html' %}
 
-{% block content %}
+
+<!---
+
     <h1> New Review</h1>
   <form method="POST" class="review-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 
+    fields = ('title', 'subtitle', 'tldr', 'desc', 'movie', 'rating', )
+--->
+
+{% block content %}
+    <h1> New Review </h1>
+    <form method="POST" class='review-form' enctype='multipart/form-data'>{% csrf_token %}
+        <div>
+                    {{ form.title.errors }}
+                    {{ form.title.label_tag }}
+                    {{ form.title }}
+        </div>
+
+        <div>
+            {{ form.subtitle.errors }}
+            {{ form.subtitle.label_tag }}
+            {{ form.subtitle }}
+        </div>
+        <div>
+            {{ form.tldr.errors }}
+            {{ form.tldr.label_tag }}
+            {{ form.tldr }}
+        </div>
+        <div>
+            {{ form.cover_image.errors }}
+            {{ form.cover_image.label_tag }}
+            {{ form.cover_image }}
+        </div>
+        <div>
+            {{ form.desc.errors }}
+            {{ form.desc.label_tag }}
+            {{ form.desc }}
+        </div>
+        <div class='dropdown'>
+            {{ form.movie.errors }}
+            {{ form.movie.label_tag }}
+            {{ form.movie }}
+        </div>
+        <div>
+            {{ form.rating.errors }}
+            {{ form.rating.label_tag }}
+            {{ form.rating }}
+        </div>
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
 {% endblock %}

@@ -9,4 +9,8 @@
             <p>{{ review.text|truncatechars:200 }}</p>
         </div>
     {% endfor %}
+
+    {% if not reviews %}
+        <div> Yay! No drafts pending. </div>
+    {% endif %}
 {% endblock %}

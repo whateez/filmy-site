@@ -5,6 +5,11 @@ body {
     font-family: 'Droid Sans', sans-serif;
 }
 
+.msg{
+    color: #FCA205;
+    font-size:18px !important;
+}
+
 .f14{
     font-size:14px !important;
 }

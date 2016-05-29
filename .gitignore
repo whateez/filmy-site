@@ -5,3 +5,5 @@ db.sqlite3
 myenv
 /static
 local_settings.py
+static_cdn/
+media_cdn/
