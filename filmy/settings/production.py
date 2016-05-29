@@ -27,5 +27,5 @@ DATABASES = {
 }
 
 if not DEBUG:
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_STORAGE_BUCKET_NAME = get_env_variable('AWS_STORAGE_BUCKET_NAME')
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
