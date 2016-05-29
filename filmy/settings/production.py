@@ -25,7 +25,3 @@ DATABASES = {
         'PORT': '10142',
     }
 }
-
-if not DEBUG:
-    AWS_STORAGE_BUCKET_NAME = get_env_variable('AWS_STORAGE_BUCKET_NAME')
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
