@@ -15,12 +15,13 @@
 {% block content %}
     <h1> New Review </h1>
     <form method="POST" class='review-form' enctype='multipart/form-data'>{% csrf_token %}
+
         <div>
                     {{ form.title.errors }}
                     {{ form.title.label_tag }}
                     {{ form.title }}
         </div>
-
+        
         <div>
             {{ form.subtitle.errors }}
             {{ form.subtitle.label_tag }}

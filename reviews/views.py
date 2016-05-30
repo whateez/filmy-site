@@ -28,8 +28,8 @@ def review_list(request):
     }
     return render(request, 'reviews/review_list.html', context)
 
-def review_detail(request, pk):
-    review_item = get_object_or_404(review, pk=pk)
+def review_detail(request, slug):
+    review_item = get_object_or_404(review, slug=slug)
     #review_movie = movie.objects.get(pk=review_item.movie_id)
     #review_details = movie_artist.objects.filter(movie_id=review_movie.id)
     context = {
@@ -55,8 +55,8 @@ def review_new(request):
     return render(request, 'reviews/review_edit.html', context)
 
 @login_required
-def review_edit(request, pk):
-    review_item = get_object_or_404(review, pk=pk)
+def review_edit(request, slug):
+    review_item = get_object_or_404(review, slug=slug)
     if request.method == "POST":
         form = reviewForm(request.POST, request.FILES or None, instance=review_item)
         if form.is_valid():
@@ -77,22 +77,22 @@ def review_draft_list(request):
     return render(request, 'reviews/review_draft_list.html', context)
 
 @login_required
-def review_publish(request, pk):
-    review_item = get_object_or_404(review, pk=pk)
+def review_publish(request, slug):
+    review_item = get_object_or_404(review, slug=slug)
     review_item.publish()
     messages.success(request, "Review published.", extra_tags='msg')
     return redirect(review_item.get_absolute_url())
 
 @login_required
-def review_unpublish(request, pk):
-    review_item = get_object_or_404(review, pk=pk)
+def review_unpublish(request, slug):
+    review_item = get_object_or_404(review, slug=slug)
     review_item.unpublish()
     messages.success(request, "Review unpublished.")
     return redirect(review_item.get_absolute_url())
 
 @login_required
-def review_delete(request, pk):
-    review_item = get_object_or_404(review, pk=pk)
+def review_delete(request, slug):
+    review_item = get_object_or_404(review, slug=slug)
     review_item.delete()
     messages.success(request, "Review deleted.")
     return redirect('/')
