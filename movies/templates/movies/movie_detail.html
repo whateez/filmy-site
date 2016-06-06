@@ -1,0 +1,14 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+
+{{ movie_item.name }}
+<div> {{ movie_item.storyline }}
+</div>
+
+{{ movie_item.lang }}
+<div>
+{{ movie_item.cast_crew }}
+</div>
+
+{% endblock %}

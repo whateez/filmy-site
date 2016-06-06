@@ -72,3 +72,21 @@ h1, h2, h3, h4 {
 .post h1 a, .post h1 a:visited {
     color: #000000;
 }
+
+.search {
+    width: auto;
+    background-color: #3b3b3b;
+    padding: 20px;
+}
+
+.no_margin{
+    margin:0px !important;
+}
+
+.no_padding{
+    padding:0px !important;
+}
+
+.no_border{
+    border:0px !important;
+}

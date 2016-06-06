@@ -1,0 +1,9 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+    {% for movie in movies_list %}
+        <a href = '{{ movie.get_absolute_url }}'>
+            {{ movie.name }}
+        </a>
+    {% endfor %}
+{% endblock %}

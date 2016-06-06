@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import movie, artist, movie_artist, role, language
+from .models import movie, artist, movie_artist, role, language, genre, movie_genre
 # Register your models here.
 
 class movieAdmin(admin.ModelAdmin):
@@ -36,3 +36,16 @@ class languageAdmin(admin.ModelAdmin):
         model=language
 
 admin.site.register(language, languageAdmin)
+class genresAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'last_updated_date')
+    class Meta:
+        model=genre
+
+admin.site.register(genre, genresAdmin)
+
+class movie_genreAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'last_updated_date')
+    class Meta:
+        model=movie_genre
+
+admin.site.register(movie_genre, movie_genreAdmin)

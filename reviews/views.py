@@ -7,12 +7,23 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.template import RequestContext
+from django.db.models import Q
+
 
 
 # Create your views here.
 def review_list(request):
     reviews_list = review.objects.filter(published=True).order_by('-published_date')
-    paginator = Paginator(reviews_list, 5) # Show 25 contacts per page
+    query = request.GET.get("q")
+    if query:
+        reviews_list = reviews_list.filter(
+            Q(title__icontains=query) |
+            Q(desc__icontains=query)
+            ).distinct()
+
+    movies_list = movie.objects.all()
+
+    paginator = Paginator(reviews_list, 10) # Show 25 contacts per page
     page_request_var = 'page'
 
     page = request.GET.get(page_request_var)
@@ -24,7 +35,8 @@ def review_list(request):
         reviews = paginator.page(paginator.num_pages)
 
     context = {'reviews' : reviews,
-        'page_request_var' : page_request_var
+        'page_request_var' : page_request_var,
+        'movies_list' : movies_list
     }
     return render(request, 'reviews/review_list.html', context)
 

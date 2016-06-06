@@ -1,5 +1,16 @@
 {% extends 'reviews/base.html' %}
+
+{% block leftpane%}
+    <div class="col-lg-3">
+        {% for movie in movies_list %}
+            {{ movie.name }}
+        {% endfor %}
+    </div>
+{% endblock %}
+
 {% block content %}
+    <div class="col-lg-6">
+
     {% for review in reviews %}
         <div class="post">
             <div class="date">
@@ -20,7 +31,7 @@
     <div class="pagination">
         <span class="step-links">
             {% if reviews.has_previous %}
-                <a href="?{{ page_request_var }}={{ reviews.previous_page_number }}">previous</a>
+                <a href="?{% if request.GET.q %}q={{request.GET.q}}&{% endif %}{{ page_request_var }}={{ reviews.previous_page_number }}">previous</a>
             {% endif %}
 
             <span class="current">
@@ -28,17 +39,21 @@
             </span>
 
             {% if reviews.has_next %}
-                <a href="?{{ page_request_var }}={{ reviews.next_page_number }}">next</a>
+                <a href="?{% if request.GET.q %}q={{request.GET.q}}&{% endif %}{{ page_request_var }}={{ reviews.next_page_number }}">next</a>
             {% endif %}
         </span>
     </div>
+    </div>
+
 {% endblock %}
 
 {% block rightpane %}
+<div class="col-md-3">
     <div class="f16"> <strong> Recent reviews </strong></div>
     {% for review in reviews %}
         <div class="f14 mBtm_10">
             <a href="{{ review.get_absolute_url }}">{{ review.title }}</a>
         </div>
     {% endfor %}
+</div>
 {% endblock %}

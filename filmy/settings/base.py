@@ -34,7 +34,10 @@ INSTALLED_APPS = [
     'django_summernote',
     'reviews',
     'movies',
+    'crispy_forms',
 ]
+
+
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,3 +135,21 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+    'internal_css': (
+        os.path.join(STATIC_URL,'django_summernote/summernote.css'),
+    ),
+    'internal_js': (
+        os.path.join(STATIC_URL,'django_summernote/jquery.ui.widget.js'),
+        os.path.join(STATIC_URL,'django_summernote/jquery.iframe-transport.js'),
+        os.path.join(STATIC_URL,'django_summernote/jquery.fileupload.js'),
+        os.path.join(STATIC_URL,'django_summernote/summernote.min.js'),
+    ),
+    'width': '100%',
+    'height': '480',
+}
