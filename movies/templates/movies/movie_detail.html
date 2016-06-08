@@ -1,4 +1,5 @@
 {% extends 'reviews/base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
@@ -6,9 +7,54 @@
 <div> {{ movie_item.storyline }}
 </div>
 
-{{ movie_item.lang }}
+{% if movie_item.lang %}
+    <div> Language: {{ movie_item.lang }} </div>
+{% endif %}
+
+{% if genres %}
+    <div> Genres:
+        {% for g in genres %}
+            {{ g.genre }},
+        {% endfor %}
+    </div>
+{% endif %}
+
 <div>
-{{ movie_item.cast_crew }}
+    {% regroup cast by role as ma_list %}
+    <ul>
+        {% for role in ma_list %}
+            <li>{{ role.grouper }}:
+                <ul class="">
+                    {% for item in role.list %}
+                        <li>{{ item.artist }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
+
+{% if reviews %}
+    <div >
+        <h1>Reviews</h1>
+        {% for review in reviews %}
+            <div class="col-lg-6 mTop_10 mBtm_10">
+                <div class="border_1 padAll_10">
+                    <div class="date">
+                        {{ review.published_date }}
+                    </div>
+                    <div><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></div>
+                    <div>
+                        {% autoescape off %}
+                            {{ review.desc|truncatechars:300|striptags }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
 
 {% endblock %}

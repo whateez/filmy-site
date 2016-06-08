@@ -22,7 +22,7 @@ def review_list(request):
             ).distinct()
 
     movies_list = movie.objects.all()
-
+    upcoming_movies = movies_list.filter(release_date__gte=timezone.now())
     paginator = Paginator(reviews_list, 10) # Show 25 contacts per page
     page_request_var = 'page'
 
@@ -36,14 +36,14 @@ def review_list(request):
 
     context = {'reviews' : reviews,
         'page_request_var' : page_request_var,
-        'movies_list' : movies_list
+        'movies_list' : movies_list,
+        'upcoming_movies':upcoming_movies,
     }
     return render(request, 'reviews/review_list.html', context)
 
 def review_detail(request, slug):
     review_item = get_object_or_404(review, slug=slug)
-    #review_movie = movie.objects.get(pk=review_item.movie_id)
-    #review_details = movie_artist.objects.filter(movie_id=review_movie.id)
+    #review_details = movie_artist.objects.filter(movie_id=review.movie.id)
     context = {
         'review': review_item,
     #    'movie': review_movie,

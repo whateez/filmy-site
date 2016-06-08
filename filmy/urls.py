@@ -21,8 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('', include('reviews.urls', namespace='reviews')),
-    url('', include('movies.urls', namespace='movies')),
+    url(r'^review/', include('reviews.urls', namespace='reviews')),
+    url(r'^movies/', include('movies.urls', namespace='movies')),
     url(r'^summernote/', include('django_summernote.urls')),
 ]
 
@@ -32,3 +32,6 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'reviews.views.page_not_found'
 handler500 = 'reviews.views.server_error'
+
+
+urlpatterns += url(r'^$[\/]?', 'reviews.views.review_list', name="home"),

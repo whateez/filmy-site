@@ -2,9 +2,13 @@
 
 {% block leftpane%}
     <div class="col-lg-3">
-        {% for movie in movies_list %}
-            {{ movie.name }}
-        {% endfor %}
+        <div> Upcoming Movies
+            {% for movie in upcoming_movies %}
+                <div>
+                    <a href="{{ movie.get_absolute_url }}"> {{ movie.name }} </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 

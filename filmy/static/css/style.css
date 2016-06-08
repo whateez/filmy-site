@@ -7,24 +7,10 @@ body {
 
 .msg{
     color: #FCA205;
-    font-size:18px !important;
+    font-size:18px;
 }
 
-.f14{
-    font-size:14px !important;
-}
 
-.f16{
-    font-size:16px !important;
-}
-
-.f18{
-    font-size:18px !important;
-}
-
-.mBtm_10{
-    margin-bottom:10px;
-}
 
 .page-header {
     background-color: #ff9400;
@@ -42,7 +28,7 @@ body {
     margin-left: 40px;
 }
 
-h1, h2, h3, h4 {
+.bold{
     font-weight: 700;
 }
 
@@ -79,14 +65,79 @@ h1, h2, h3, h4 {
     padding: 20px;
 }
 
+.center_text{
+    text-align:center;
+}
+
+.movie_poster{
+    height:400px;
+    width:auto;
+}
+
+
 .no_margin{
-    margin:0px !important;
+    margin:0;
 }
 
 .no_padding{
-    padding:0px !important;
+    padding:0;
 }
 
 .no_border{
-    border:0px !important;
+    border:0;
+}
+
+
+.f14{
+    font-size:14px;
+}
+
+.f16{
+    font-size:16px;
+}
+
+.f18{
+    font-size:18px;
+}
+
+
+.mAll{
+    margin:10px;
+}
+
+.mTop_10{
+    margin-top:10px;
+}
+
+.mBtm_10{
+    margin-bottom:10px;
+}
+
+
+
+.padAll_10{
+    padding:10px;
+}
+
+.padTop_10{
+    padding-top:10px;
+}
+
+.padBtm_10{
+    padding-bottom:10px;
+}
+
+
+
+
+.border_1{
+    border-width:1px;
+    border-radius:5px;
+    border-color:#343434;
+    border-style:solid;
+}
+
+
+.item_bg{
+    background-color:grey;
 }

@@ -2,9 +2,9 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns =[
-    url(r'^movies/$', views.movie_list, name="movie_list"),
+    url(r'^$', views.movie_list, name="movie_list"),
     #url(r'^review/new/$', views.review_new, name="review_new"),
-    url(r'^movies/(?P<id>[\d]+)/$', views.movie_detail, name="movie_detail"),
+    url(r'^(?P<slug>[\w-]+)/$', views.movie_detail, name="movie_detail"),
     #url(r'^review/(?P<slug>[\w-]+)/edit/$', views.review_edit, name="review_edit"),
     #url(r'^review/(?P<slug>[\w-]+)/publish/$', views.review_publish, name="review_publish"),
     #url(r'^review/(?P<slug>[\w-]+)/unpublish/$', views.review_unpublish, name="review_unpublish"),
