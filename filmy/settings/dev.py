@@ -14,6 +14,11 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = []
 
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
+SITE_ID = 3
 
 DATABASES = {
     'default': {
@@ -25,3 +30,5 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+INSTALLED_APPS += ('sslserver',)

@@ -1,5 +1,6 @@
 Django==1.9.6
 django-crispy-forms==1.6.0
+django-secure==1.0.1
 django-summernote==0.8.5
 Pillow==3.2.0
 psycopg2==2.6.1

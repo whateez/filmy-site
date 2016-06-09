@@ -19,20 +19,7 @@
 
     </head>
     <body>
-
-        <div class="page-header no_margin no_border">
-            {% if user.is_authenticated %}
-                <a href="{% url 'reviews:review_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-                <a href="{% url 'reviews:review_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            {% endif %}
-            <h1><a href="/">Filmy</a></h1>
-            <div>
-                <ul class="list-inline">
-                    <li><a href="/movies/">Movies</a></li>
-                    <li><a href="/review/">Reviews</a></li>
-                </ul>
-            </div>
-        </div>
+        {% include 'reviews/header.html' %}
 
         {% if messages %}
         <ul class="messages">
@@ -45,7 +32,7 @@
 
 
 
-
+        {% block check %}
         <div class="content container">
             <div class="row">
                 <div class="search">
@@ -67,6 +54,7 @@
                 {% endblock %}
             </div>
         </div>
+        {% endblock %}
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
               var js, fjs = d.getElementsByTagName(s)[0];

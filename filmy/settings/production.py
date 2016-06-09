@@ -14,6 +14,14 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 DEBUG = False
 ALLOWED_HOSTS = ['*']
 
+
+SITE_ID = 3
+
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 DB_USER = get_env_variable('DB_USER')
 DB_PASS = get_env_variable('DB_PASS')
 

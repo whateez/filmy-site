@@ -35,3 +35,6 @@ handler500 = 'reviews.views.server_error'
 
 
 urlpatterns += url(r'^$[\/]?', 'reviews.views.review_list', name="home"),
+urlpatterns += [
+    url(r'', include('django.contrib.flatpages.urls')),
+]
