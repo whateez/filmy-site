@@ -1,12 +1,15 @@
-{% include 'reviews/base.html' %}
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>{{ flatpage.title }}</title>
+
+{% include 'reviews/static.html' %}
+
 </head>
 <body>
-
+{% include 'reviews/header.html' %}
     dsds
 {{ flatpage.content }}
 </body>
