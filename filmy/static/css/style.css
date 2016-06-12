@@ -5,6 +5,12 @@ body {
     background-color:#FBF5F3;
 }
 
+@media (max-width: 991px){
+    body{
+        padding-top:70px;
+    }
+}
+
 .msg{
     color: #FCA205;
     font-size:18px;
@@ -21,6 +27,12 @@ body {
 .topnav{
     background-color: #FFFFFF;
     height:80px;
+}
+
+@media (max-width: 991px){
+    .topnav{
+        height:50px;
+    }
 }
 
 .topnav-links{
@@ -42,6 +54,12 @@ body {
     float:left;
     height:60px;
     padding:0 20px;
+}
+
+@media (max-width: 991px){
+    .logo{
+        height:40px;
+    }
 }
 
 .brand{
