@@ -38,8 +38,8 @@
     <div >
         <h1>Reviews</h1>
         {% for review in reviews %}
-            <div class="col-lg-6 mTop_10 mBtm_10">
-                <div class="border_1 padAll_10">
+            <div class="col-lg-6">
+                <div class="card">
                     <div class="date">
                         {{ review.published_date }}
                     </div>
@@ -51,6 +51,7 @@
                     </div>
                 </div>
             </div>
+            
         {% endfor %}
     </div>
 {% endif %}

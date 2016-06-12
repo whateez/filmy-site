@@ -1,34 +1,27 @@
 {% extends 'reviews/base.html' %}
 
-{% block leftpane%}
-    <div class="col-lg-3">
-        <div> Upcoming Movies
-            {% for movie in upcoming_movies %}
-                <div>
-                    <a href="{{ movie.get_absolute_url }}"> {{ movie.name }} </a>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
-    <div class="col-lg-6">
-
+    <div class="col-lg-8">
     {% for review in reviews %}
-        <div class="post">
-            <div class="date">
-                {{ review.published_date }}
-            </div>
+
+        <div class="row card">
+
             <h1><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></h1>
             {% if review.cover_image %}
                 <img src='{{ review.cover_image.url }}' class='img-responsive' />
             {% endif %}
-            <p class="f16">
-                {% autoescape off %}
-                    {{ review.desc|truncatechars:300 }}
-                {% endautoescape %}
-            </p>
+            {% autoescape off %}
+                <div class="post">
+                    <a href="{{ review.get_absolute_url }}">
+                        {{ review.desc|striptags|truncatechars:300 }}
+                        <span class="f16">Read More </span>
+                    </a>
+                </div>
+            {% endautoescape %}
+
+            <div class="mBtm_10 f16">
+                By {% firstof review.author.get_full_name review.author.username  %} {{ review.published_date|timesince }} ago
+            </div>
         </div>
         <div style="clear:both;"> </div>
     {% endfor %}
@@ -37,10 +30,11 @@
             {% if reviews.has_previous %}
                 <a href="?{% if request.GET.q %}q={{request.GET.q}}&{% endif %}{{ page_request_var }}={{ reviews.previous_page_number }}">previous</a>
             {% endif %}
-
-            <span class="current">
-                Page {{ reviews.number }} of {{ reviews.paginator.num_pages }}.
-            </span>
+            {% if reviews.paginator.num_pages > 1 %}
+                <span class="current">
+                    Page {{ reviews.number }} of {{ reviews.paginator.num_pages }}.
+                </span>
+            {% endif %}
 
             {% if reviews.has_next %}
                 <a href="?{% if request.GET.q %}q={{request.GET.q}}&{% endif %}{{ page_request_var }}={{ reviews.next_page_number }}">next</a>
@@ -52,7 +46,30 @@
 {% endblock %}
 
 {% block rightpane %}
-<div class="col-md-3">
+<div class="col-md-4">
+    <div class="search">
+        <form method='GET' action=''>
+            <div class="input-group">
+                <input type='text' class="form-control" name='q' placeholder='Search reviews' value='{{request.GET.q}}' />
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <div class="mAll_10"> Upcoming Movies
+        {% for movie in upcoming_movies %}
+            <div>
+                <a href="{{ movie.get_absolute_url }}"> {{ movie.name }} </a>
+            </div>
+        {% endfor %}
+    </div>
+
+
     <div class="f16"> <strong> Recent reviews </strong></div>
     {% for review in reviews %}
         <div class="f14 mBtm_10">

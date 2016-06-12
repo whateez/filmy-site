@@ -1,8 +1,8 @@
-h1 a {
-    color: #FCA205;
-}
 body {
-    font-family: 'Droid Sans', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #2B2D42;
+    padding-top: 95px;
+    background-color:#FBF5F3;
 }
 
 .msg{
@@ -10,70 +10,106 @@ body {
     font-size:18px;
 }
 
-
-
 .page-header {
-    background-color: #ff9400;
-    margin-top: 0;
-    padding: 20px 20px 20px 40px;
+    padding: 20px 20px 10px 40px;
 }
 
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 36pt;
-    text-decoration: none;
+.page-header a, .page-header a:hover, .page-header a:visited{
+    color:#a40606;
 }
 
-.content {
-    margin-left: 40px;
+.topnav{
+    background-color: #FFFFFF;
+    height:80px;
 }
 
-.bold{
-    font-weight: 700;
+.topnav-links{
+    color:#a40606 !important;
+    opacity:0.6;
+    padding:35px 15px 25px 15px!important;
 }
 
-.date {
-    color: #828282;
+.topnav-links:hover{
+    opacity:1;
 }
 
-.save {
-    float: right;
+.topnav-border{
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border-bottom: 1px solid rgba(0,0,0,.09);
 }
 
-.post-form textarea, .post-form input {
-    width: 100%;
+.logo{
+    float:left;
+    height:60px;
+    padding:0 20px;
 }
+
+.brand{
+    padding:5px;
+}
+
 
 .top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
     float: right;
-    font-size: 26pt;
-    margin-right: 20px;
-}
-
-.post {
-    margin-bottom: 70px;
-}
-
-.post h1 a, .post h1 a:visited {
-    color: #000000;
+    font-size: 40px;
+    margin:20px;
 }
 
 .search {
     width: auto;
-    background-color: #3b3b3b;
-    padding: 20px;
+}
+
+.footer{
+    padding:20px 40px;
+    background-color:#2B2D42;
+    color:#DDD1C7;
+}
+
+.post, .post p{
+    font-size:21px;
+}
+
+.card{
+    background-color:#FFFFFF;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+    margin:10px;
+    padding:10px;
+    border-radius: 3px;
+}
+
+.card a, .card a:hover, .card a:visited{
+    color:#2B2D42;
+    text-decoration:none;
 }
 
 .center_text{
     text-align:center;
+    word-break: break-all;
+    box-sizing: border-box
 }
 
-.movie_poster{
-    height:400px;
-    width:auto;
+@media (max-width: 991px) {
+    .movie_poster{
+        height:200px;
+        width:auto;
+    }
+}
+@media (min-width: 992px){
+    .movie_poster{
+        height:400px;
+        width:auto;
+    }
 }
 
+
+.bgwhite{
+    background-color:#FFFFFF;
+}
+
+.w100{
+    width:100%;
+}
 
 .no_margin{
     margin:0;
@@ -100,8 +136,23 @@ body {
     font-size:18px;
 }
 
+.f20{
+    font-size:20px;
+}
 
-.mAll{
+.f24{
+    font-size:24px;
+    font-weight:300;
+}
+
+.f36{
+    font-size:36px;
+}
+
+
+
+
+.mAll_10{
     margin:10px;
 }
 
@@ -139,5 +190,5 @@ body {
 
 
 .item_bg{
-    background-color:grey;
+    background-color:#DDD1C7;
 }

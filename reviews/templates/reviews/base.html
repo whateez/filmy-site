@@ -27,19 +27,8 @@
 
 
         {% block check %}
-        <div class="content container">
+        <div class="content container ">
             <div class="row">
-                <div class="search">
-                    <form method='GET' action=''>
-                        <div class="input-group">
-                            <input type='text' class="form-control" name='q' placeholder='Search reviews' value='{{request.GET.q}}' />
-                            <span class="input-group-btn">
-                                <input type='submit' class="btn btn-default" value='Search' />
-                            </span>
-                        </div>
-                    </form>
-                </div>
-
                 {% block leftpane %}
                 {% endblock %}
                 {% block content %}
@@ -49,6 +38,12 @@
             </div>
         </div>
         {% endblock %}
+
+        {%include 'reviews/footer.html'%}
+
+
+
+
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
               var js, fjs = d.getElementsByTagName(s)[0];

@@ -3,20 +3,20 @@
 
 
 {% block content %}
-    <div class="row">
         {% for movie in movies_list %}
-            <div class="col-lg-3 mTop_10 mBtm_10">
-                <div class="">
+            <div class="mAll_10" style="display:inline-block;">
+                <div class="pull-left">
                     <a href = '{{ movie.get_absolute_url }}' class="f18">
                         {% if movie.cover_image %}
-                            <img src="{{ movie.cover_image.url }}" class="img-responsive movie_poster center-block" />
+                            <img src="{{ movie.cover_image.url }}" class="movie_poster center-block" />
                         {% else %}
-                            <img src="{% static 'img/no_poster.jpg' %}" class="img-responsive movie_poster center-block" />
+                            <img src="{% static 'img/no_poster.jpg' %}" class="movie_poster center-block" />
                         {% endif %}
-                        <div class="f14 center_text item_bg padTop_10 padBtm_10">{{ movie.name }}</div>
+                        <div class="f16 center_text item_bg padTop_10 padBtm_10">{{ movie.name }}</div>
                     </a>
                 </div>
             </div>
         {% endfor %}
+
     </div>
 {% endblock %}
