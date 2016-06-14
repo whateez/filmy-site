@@ -44,7 +44,7 @@
                     <div><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></div>
                     <div>
                         {% autoescape off %}
-                            {{ review.desc|truncatechars:300|striptags }}
+                            {{ review.desc|striptags|truncatechars:300 }}
                         {% endautoescape %}
                     </div>
                 </div>
